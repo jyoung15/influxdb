@@ -1018,7 +1018,7 @@ func encodeIteratorOptions(opt *IteratorOptions) *internal.IteratorOptions {
 	}
 
 	// Encode group by dimensions from a map.
-	if pb.GroupBy != nil {
+	if opt.GroupBy != nil {
 		dimensions := make([]string, 0, len(opt.GroupBy))
 		for dim := range opt.GroupBy {
 			dimensions = append(dimensions, dim)
