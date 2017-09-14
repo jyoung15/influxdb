@@ -28,6 +28,9 @@ func (l *limitListener) Accept() (net.Conn, error) {
 		if err != nil {
 			return nil, err
 		}
+		if tcpConn, ok := c.(*net.TCPConn); ok {
+			tcpConn.SetKeepAlive(true)
+		}
 
 		select {
 		case l.sem <- struct{}{}:
